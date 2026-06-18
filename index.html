@@ -160,6 +160,94 @@
     border-left: 3px solid var(--lime);
   }
 
+  /* Category evidence cards — dónde han usado Cashback */
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 640px) {
+    .category-grid { grid-template-columns: 1fr; }
+  }
+  .category-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 18px 16px;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .category-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-dark), var(--lime));
+  }
+  .category-card:hover {
+    box-shadow: 0 8px 28px rgba(27,107,42,0.10);
+    transform: translateY(-2px);
+  }
+  .category-card-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .category-icon {
+    font-size: 20px;
+    line-height: 1;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .category-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+  .category-count {
+    font-size: 10.5px;
+    color: var(--text-tertiary);
+    margin-top: 1px;
+  }
+
+  /* Logo-chip ecosystem — marcas mencionadas */
+  .logo-chip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .brand-logo-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 36px;
+    padding: 0 14px;
+    border-radius: 9px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: -0.01em;
+    color: #fff;
+    box-shadow: 0 1px 2px rgba(17,28,17,0.06), 0 4px 10px rgba(17,28,17,0.08);
+    white-space: nowrap;
+  }
+  .brand-logo-mark {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.55);
+    flex-shrink: 0;
+  }
+
   /* Hypothesis table */
   .hyp-row {
     display: grid;
@@ -1147,23 +1235,93 @@
         <div class="reveal">
           <div class="section-num">04</div>
           <div class="section-eyebrow mt-1 mb-4">Hallazgo UX 1</div>
-          <h2 class="font-display text-3xl font-bold mb-5 leading-snug">Cashback tiene un significado muy claro para los usuarios</h2>
-          <div class="flex items-end gap-3 mb-2">
-            <div class="text-6xl font-bold text-[var(--accent)]" data-count="91">0</div>
+          <h2 class="font-display text-3xl font-bold mb-6 leading-snug">Cashback es un concepto familiar para la mayoría de los usuarios</h2>
+
+          <div class="grid grid-cols-2 gap-3 mb-6">
+            <div class="kpi-card" style="padding:20px 18px;">
+              <div class="kpi-number" data-count="91" style="font-size:40px;">0</div>
+              <div class="text-xs mt-2 text-[var(--text-secondary)] leading-snug">había escuchado el término antes del estudio</div>
+            </div>
+            <div class="kpi-card" style="padding:20px 18px;">
+              <div class="kpi-number kpi-plain" data-count="50" style="font-size:40px;">0</div>
+              <div class="text-xs mt-2 text-[var(--text-secondary)] leading-snug">ya había utilizado un beneficio de Cashback previamente</div>
+            </div>
           </div>
-          <div class="text-[var(--text-secondary)]">conocía el término antes del estudio.</div>
-          <div class="mt-8 bg-[var(--accent-light)] border border-[var(--accent-mid)] rounded-xl p-5">
+
+          <div class="bg-[var(--accent-light)] border border-[var(--accent-mid)] rounded-xl p-5">
             <div class="text-xs font-semibold text-[var(--accent)] uppercase tracking-widest mb-2">Insight UX</div>
             <p class="text-sm text-[var(--text-secondary)] leading-relaxed">
-              El usuario no necesita aprender qué es Cashback.<br>
-              <strong class="text-[var(--text-primary)]">Ya posee un modelo mental consolidado.</strong>
+              Los usuarios llegan al estudio con referencias previas provenientes de bancos, retailers y plataformas digitales.<br>
+              No están construyendo una definición nueva de Cashback.<br>
+              <strong class="text-[var(--text-primary)]">Ya poseen un modelo mental consolidado sobre cómo debería funcionar.</strong>
             </p>
           </div>
         </div>
       </div>
 
-      <div class="md:col-span-7 flex flex-col justify-center gap-4">
+      <div class="md:col-span-7 flex flex-col justify-center gap-8">
         <div class="reveal reveal-delay-1">
+          <div class="section-eyebrow mb-2">¿Dónde habían utilizado Cashback?</div>
+          <p class="text-sm text-[var(--text-secondary)] mb-5" style="max-width:520px;">Los participantes ya tenían experiencia previa con beneficios de Cashback en distintos contextos de su vida financiera y de consumo.</p>
+          <div class="category-grid">
+            <div class="category-card">
+              <div class="category-card-head">
+                <div class="category-icon">🏦</div>
+                <div>
+                  <div class="category-name">Bancos</div>
+                  <div class="category-count">4 marcas mencionadas</div>
+                </div>
+              </div>
+              <div class="logo-chip-grid">
+                <span class="brand-logo-chip" style="background:#004481;"><span class="brand-logo-mark"></span>BBVA</span>
+                <span class="brand-logo-chip" style="background:#EC0000;"><span class="brand-logo-mark"></span>Santander</span>
+                <span class="brand-logo-chip" style="background:#D52B1E;"><span class="brand-logo-mark"></span>Banorte</span>
+                <span class="brand-logo-chip" style="background:#1A1A1A;"><span class="brand-logo-mark"></span>Klar</span>
+              </div>
+            </div>
+            <div class="category-card">
+              <div class="category-card-head">
+                <div class="category-icon">🛒</div>
+                <div>
+                  <div class="category-name">Retail</div>
+                  <div class="category-count">3 marcas mencionadas</div>
+                </div>
+              </div>
+              <div class="logo-chip-grid">
+                <span class="brand-logo-chip" style="background:#0071CE;"><span class="brand-logo-mark"></span>Walmart</span>
+                <span class="brand-logo-chip" style="background:#0A8E3F;"><span class="brand-logo-mark"></span>Bodega Aurrerá</span>
+                <span class="brand-logo-chip" style="background:#E4032E;"><span class="brand-logo-mark"></span>Oxxo</span>
+              </div>
+            </div>
+            <div class="category-card">
+              <div class="category-card-head">
+                <div class="category-icon">📱</div>
+                <div>
+                  <div class="category-name">Plataformas digitales</div>
+                  <div class="category-count">2 marcas mencionadas</div>
+                </div>
+              </div>
+              <div class="logo-chip-grid">
+                <span class="brand-logo-chip" style="background:#00AEEF;"><span class="brand-logo-mark"></span>Mercado Pago</span>
+                <span class="brand-logo-chip" style="background:#FF441F;"><span class="brand-logo-mark"></span>Rappi</span>
+              </div>
+            </div>
+            <div class="category-card">
+              <div class="category-card-head">
+                <div class="category-icon">✈️</div>
+                <div>
+                  <div class="category-name">Viajes</div>
+                  <div class="category-count">1 marca mencionada</div>
+                </div>
+              </div>
+              <div class="logo-chip-grid">
+                <span class="brand-logo-chip" style="background:#E32726;"><span class="brand-logo-mark"></span>Volaris</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-2">
           <div class="section-eyebrow mb-5">Frases reales de los participantes</div>
           <div class="space-y-3">
             <div class="quote-card reveal reveal-delay-1">
@@ -1427,31 +1585,146 @@
         <div class="reveal">
           <div class="section-num">06</div>
           <div class="section-eyebrow mt-1 mb-4">Hallazgo UX 3</div>
-          <h2 class="font-display text-3xl font-bold mb-5 leading-snug">Las restricciones son la principal fuente de fricción</h2>
-          <div class="bg-[var(--accent-light)] border border-[var(--accent-mid)] rounded-xl p-5">
-            <div class="text-xs font-semibold text-[var(--accent)] uppercase tracking-widest mb-2">Insight UX</div>
-            <p class="text-sm leading-relaxed">
-              El problema <strong>no es el beneficio.</strong><br>
-              El problema son las <strong>condiciones asociadas a su uso.</strong>
-            </p>
+          <h2 class="font-display text-3xl font-bold mb-6 leading-snug">Las condiciones influyen directamente en el valor percibido del beneficio</h2>
+
+          <div class="grid grid-cols-2 gap-3 mb-6">
+            <div style="background:white; border:1px solid var(--border); border-radius:14px; padding:18px 14px; text-align:center;">
+              <div class="kpi-number kpi-plain" data-count="21" style="font-size:2.2rem; color:#C2410C;">0<span style="font-size:1.4rem;">%</span></div>
+              <div style="font-size:11px; color:var(--text-secondary); margin-top:6px; line-height:1.4;">considera el beneficio poco atractivo</div>
+            </div>
+            <div style="background:white; border:1px solid var(--border); border-radius:14px; padding:18px 14px; text-align:center;">
+              <div class="kpi-number kpi-plain" data-count="88" style="font-size:2.2rem; color:#D97706;">0<span style="font-size:1.4rem;">%</span></div>
+              <div style="font-size:11px; color:var(--text-secondary); margin-top:6px; line-height:1.4;">considera importante conocer las condiciones antes de comprar</div>
+            </div>
+          </div>
+
+          <div style="background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:18px 20px; margin-bottom:20px;">
+            <div class="text-xs font-semibold text-[var(--text-tertiary)] uppercase tracking-widest mb-3">Lo que expresaron los usuarios</div>
+            <ul style="font-size:14px; color:var(--text-secondary); line-height:1.7; margin:0; padding-left:2px; list-style:none;">
+              <li style="display:flex; gap:8px; margin-bottom:6px;"><span style="color:#F97316;">●</span> Restricciones de uso</li>
+              <li style="display:flex; gap:8px; margin-bottom:6px;"><span style="color:#F97316;">●</span> Compras futuras obligatorias</li>
+              <li style="display:flex; gap:8px; margin-bottom:6px;"><span style="color:#F97316;">●</span> Montos mínimos</li>
+              <li style="display:flex; gap:8px;"><span style="color:#F97316;">●</span> Falta de libertad para utilizar el beneficio</li>
+            </ul>
+          </div>
+
+          <!-- Insight UX — reforzado -->
+          <div style="background:var(--teal-light); border:1.5px solid var(--teal-mid); border-radius:16px; padding:20px 22px;">
+            <div style="display:flex; align-items:center; gap:8px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--teal-dark); margin-bottom:10px;">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="var(--teal)"><circle cx="8" cy="8" r="8"/></svg>
+              Insight UX
+            </div>
+            <p style="font-size:14px; color:var(--text-secondary); line-height:1.65; margin:0; color:var(--teal-dark);">Los usuarios valoran positivamente recibir Cashback. Sin embargo, <strong style="color:var(--text-primary)">cuando descubren condiciones o limitaciones de uso</strong>, comienzan a <strong style="color:var(--text-primary)">cuestionar el valor real del beneficio</strong>.</p>
+          </div>
+
+          <!-- Hallazgo clave — reforzado con borde izquierdo grueso -->
+          <div style="background:#FFFBEB; border:1.5px solid #FDE68A; border-left:5px solid #F59E0B; border-radius:16px; padding:20px 22px; margin-top:14px;">
+            <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:#92400E; margin-bottom:10px; display:flex; align-items:center; gap:6px;">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 1l1.9 5.8H16l-4.9 3.6 1.9 5.8L8 12.6l-5 3.6 1.9-5.8L0 6.8h6.1z"/></svg>
+              Hallazgo clave
+            </div>
+            <p style="font-size:14px; color:#78350F; line-height:1.65; margin:0; font-weight:500;">La comprensión del beneficio es alta, pero las restricciones influyen en cómo los usuarios evalúan su utilidad.</p>
           </div>
         </div>
       </div>
 
-      <div class="md:col-span-7 flex flex-col justify-center gap-3">
-        <div class="section-eyebrow mb-3 reveal">Voz del usuario</div>
-        <div class="quote-card reveal reveal-delay-1" style="border-left-color: #F97316;">
-          <p class="text-[var(--text-primary)] font-medium">"Prefiero poder usarlo libremente"</p>
+      <div class="md:col-span-7 flex flex-col justify-center gap-8">
+
+        <!-- Análisis temático de las verbalizaciones -->
+        <div class="reveal reveal-delay-1">
+          <div class="section-eyebrow mb-4">Análisis temático de las verbalizaciones</div>
+          <div style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:24px 24px 8px;">
+            <div class="naming-item">
+              <div class="naming-label" style="min-width:190px;">Falta de libertad de uso</div>
+              <div class="naming-bar-wrap">
+                <div class="bar-track"><div class="bar-fill animated" style="--target-width:43%; background:linear-gradient(90deg,#F97316,#FDBA74);"></div></div>
+              </div>
+              <div class="naming-pct" style="color:#C2410C;">3</div>
+            </div>
+            <div class="naming-item">
+              <div class="naming-label" style="min-width:190px;">Compras futuras obligatorias</div>
+              <div class="naming-bar-wrap">
+                <div class="bar-track"><div class="bar-fill animated" style="--target-width:29%; background:linear-gradient(90deg,#F97316,#FDBA74);"></div></div>
+              </div>
+              <div class="naming-pct" style="color:#C2410C;">2</div>
+            </div>
+            <div class="naming-item">
+              <div class="naming-label" style="min-width:190px;">Restricciones de uso</div>
+              <div class="naming-bar-wrap">
+                <div class="bar-track"><div class="bar-fill animated" style="--target-width:14%; background:linear-gradient(90deg,#F97316,#FDBA74);"></div></div>
+              </div>
+              <div class="naming-pct" style="color:#C2410C;">1</div>
+            </div>
+            <div class="naming-item">
+              <div class="naming-label" style="min-width:190px;">Montos mínimos</div>
+              <div class="naming-bar-wrap">
+                <div class="bar-track"><div class="bar-fill animated" style="--target-width:14%; background:linear-gradient(90deg,#F97316,#FDBA74);"></div></div>
+              </div>
+              <div class="naming-pct" style="color:#C2410C;">1</div>
+            </div>
+            <div style="font-size:11px; color:var(--text-tertiary); padding:10px 0 14px; line-height:1.5;">Distribución de las 7 verbalizaciones espontáneas por tema · cada verbalización se clasificó en una sola categoría dominante</div>
+          </div>
         </div>
-        <div class="quote-card reveal reveal-delay-2" style="border-left-color: #F97316;">
-          <p class="text-[var(--text-primary)] font-medium">"Me condiciona a otra compra"</p>
+
+        <!-- Voz del usuario, agrupada por tema -->
+        <div class="reveal reveal-delay-2">
+          <div class="section-eyebrow mb-4">Voz del usuario</div>
+
+          <div style="margin-bottom:16px;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+              <span style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#C2410C;">Falta de libertad de uso</span>
+              <span style="background:#FFF1E6; color:#C2410C; font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:99px;">3 menciones</span>
+            </div>
+            <div class="space-y-2">
+              <div class="quote-card" style="border-left-color: #F97316; padding:14px 20px;">
+                <p class="text-[var(--text-primary)] font-medium text-sm">"Prefiero poder usarlo libremente"</p>
+              </div>
+              <div class="quote-card" style="border-left-color: #F97316; padding:14px 20px;">
+                <p class="text-[var(--text-primary)] font-medium text-sm">"Debería poder usarlo para mi crédito"</p>
+              </div>
+              <div class="quote-card" style="border-left-color: #F97316; padding:14px 20px;">
+                <p class="text-[var(--text-primary)] font-medium text-sm">"No es para usarlo como uno lo necesita"</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-bottom:16px;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+              <span style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#C2410C;">Compras futuras obligatorias</span>
+              <span style="background:#FFF1E6; color:#C2410C; font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:99px;">2 menciones</span>
+            </div>
+            <div class="space-y-2">
+              <div class="quote-card" style="border-left-color: #F97316; padding:14px 20px;">
+                <p class="text-[var(--text-primary)] font-medium text-sm">"Me condiciona a otra compra"</p>
+              </div>
+              <div class="quote-card" style="border-left-color: #F97316; padding:14px 20px;">
+                <p class="text-[var(--text-primary)] font-medium text-sm">"La oferta me condiciona a otra compra"</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <div>
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                <span style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#C2410C;">Restricciones de uso</span>
+                <span style="background:#FFF1E6; color:#C2410C; font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:99px;">1</span>
+              </div>
+              <div class="quote-card" style="border-left-color: #F97316; padding:14px 20px;">
+                <p class="text-[var(--text-primary)] font-medium text-sm">"Me ponen límites"</p>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                <span style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#C2410C;">Montos mínimos</span>
+                <span style="background:#FFF1E6; color:#C2410C; font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:99px;">1</span>
+              </div>
+              <div class="quote-card" style="border-left-color: #F97316; padding:14px 20px;">
+                <p class="text-[var(--text-primary)] font-medium text-sm">"Limita a usarlo en una compra de 4000"</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="quote-card reveal reveal-delay-3" style="border-left-color: #F97316;">
-          <p class="text-[var(--text-primary)] font-medium">"Me ponen límites"</p>
-        </div>
-        <div class="quote-card reveal reveal-delay-4" style="border-left-color: #F97316;">
-          <p class="text-[var(--text-primary)] font-medium">"Debería poder usarlo para mi crédito"</p>
-        </div>
+
       </div>
 
     </div>
@@ -1524,7 +1797,7 @@
               <div class="absolute inset-0 flex items-center justify-center font-bold text-sm" style="color:var(--lime)">52%</div>
             </div>
             <div class="text-sm text-[var(--text-secondary)]">
-              <strong class="text-[var(--text-primary)] font-semibold">Cashback</strong> obtiene más del doble de preferencia que cualquier alternativa en español. El término es familiar, sin fricción lingüística notable.
+              52% eligió <strong class="text-[var(--text-primary)] font-semibold">Cashback</strong> como el nombre que mejor representa el beneficio. Aunque el término muestra una preferencia clara frente a las alternativas evaluadas, este resultado refleja el comportamiento agregado de la muestra.
             </div>
           </div>
 
